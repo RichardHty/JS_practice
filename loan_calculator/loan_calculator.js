@@ -12,6 +12,7 @@ function calculateResults(e){
 	const totalInterest = document.getElementById('total-interest');
 
 	const principal = parseFloat(amount.value);
+	//caculate monthly interest
 	const calculatedInterest = parseFloat(interests.value) / 100 /12;
 	const calculatePayments = parseFloat(years.value) * 12;
 
@@ -23,8 +24,25 @@ function calculateResults(e){
 		totalPayment.value = (monthly*calculatePayments).toFixed(2);
 		totalInterest.value = ((monthly*calculatePayments)-principal).toFixed(2);
 	}else{
-		console.log('please check your number.');
+		showError('Please check your numbers.');
 	}
 
 	e.preventDefault();
+}
+function showError(error){
+	const errorDiv = document.createElement('div');
+
+	const card = document.querySelector('.card');
+	const heading = document.querySelector('.heading');
+
+	errorDiv.className = 'alert alert-danger';
+
+	errorDiv.appendChild(document.createTextNode(error));
+
+	card.insertBefore(errorDiv,heading);
+
+	setTimeout(clearError,3000);
+}
+function clearError(){
+	document.querySelector('.alert').remove();
 }
