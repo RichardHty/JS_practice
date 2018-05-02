@@ -1,0 +1,9 @@
+h1 {
+	color: purple;
+}
+li {
+	color:orange;
+}
+#loading,#results {
+    display:none;
+}
