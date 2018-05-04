@@ -1,9 +1,15 @@
 h1 {
-	color: purple;
+	color: rgb(26, 26, 147,0.5);
 }
 li {
 	color:orange;
 }
 #loading,#results {
     display:none;
+}
+body {
+	background: url(img/leaves.jpeg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	/*border: purple solid 5px ;*/
 }
