@@ -55,6 +55,7 @@ class Game {
 
     var comp=AdobeAn.getComposition("87A16492813E4547B63FF972E909928A");
     this.lib=comp.getLibrary();
+
     this.stage.addChild(new this.lib.Background());
 
     this.generateMultipleBox(this.gameData.amount);
@@ -78,8 +79,12 @@ class Game {
       this.gameData.nextNum();
     }
     if(this.gameData.isGamewin()) {
-      var gameOverView = new this.lib.GameOverView();
-      this.stage.addChild(gameOverView);
+      this.gameOverView = new this.lib.GameOverView();
+      this.stage.addChild(this.gameOverView);
+
+      this.gameOverView.RestartBtn.on('click',(function(){
+        this.restartGame();
+      }).bind(this));
     }
   }
   reinitialize(){
@@ -98,6 +103,11 @@ class Game {
 
     this.canvas.style.width = this.stage.width + "px";
     this.canvas.style.height = this.stage.height + "px";
+  }
+  restartGame(){
+    this.stage.removeChild(this.gameOverView);
+    this.generateMultipleBox();
+    this.gameData.resetNum();
   }
 }
 
