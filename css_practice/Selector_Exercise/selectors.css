@@ -1,9 +1,9 @@
-/* Style the HTML elements according to the following instructions. 
+/* Style the HTML elements according to the following instructions.
 DO NOT ALTER THE EXISTING HTML TO DO THIS.  WRITE ONLY CSS!
 
 /* Give the <body> element a background of #bdc3c7*/
 body {
-	background: ##bdc3c7;
+	background: #bdc3c7;
 }
 
 /* Make the <h1> element #9b59b6*/
@@ -16,7 +16,7 @@ h2 {
 	color: orange;
 }
 
-/* Make all <li> elements blue(pick your own hexadecimal blue)*/ 
+/* Make all <li> elements blue(pick your own hexadecimal blue)*/
 li {
 	color: #00008b;
 }
@@ -28,7 +28,7 @@ p {
 
 /*Make all inputs have a 3px red border*/
 input {
-	border: 3px red solid; 
+	border: 3px red solid;
 }
 
 /* Give everything with the class 'hello' a white background*/
@@ -96,4 +96,3 @@ h1:hover {
 a:visited {
 	color: gray;
 }
-

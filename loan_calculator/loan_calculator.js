@@ -37,9 +37,9 @@ function calculateResults(){
 		showError('Please check your numbers.');
 	}
 
-	
+
 }
-function showError(error){
+ function showError(error){
 	document.getElementById('loading').style.display = 'none';
 	document.getElementById('results').style.display = 'none';
 
