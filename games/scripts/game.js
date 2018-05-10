@@ -5,9 +5,13 @@ class NumberBox extends createjs.Container {
     var comp=AdobeAn.getComposition("87A16492813E4547B63FF972E909928A");
     var lib=comp.getLibrary();
     var movieclip = new lib.NumberedBox();
+
     this.game = game;
     this.number = number;
-    movieclip.NumberText.text = number;
+    movieclip.NumberText.text= number;
+
+    new createjs.ButtonHelper(movieclip, 0, 1, 2, false, new lib.NumberedBox(), 3);
+
     this.addChild(movieclip);
     this.setBounds(0,0,50,50);
 
@@ -46,19 +50,17 @@ class Game {
     this.stage.height = this.canvas.height;
     this.reinitialize();
     createjs.Ticker.setFPS(60);
+    this.stage.enableMouseOver();
     createjs.Touch.enable(this.stage);
     //keep re-drawing the stage
     createjs.Ticker.on("tick",this.stage);
     window.debugStage = this.stage;
 
     this.gameData = new GameGrade();
-
     var comp=AdobeAn.getComposition("87A16492813E4547B63FF972E909928A");
     this.lib=comp.getLibrary();
 
-    this.stage.addChild(new this.lib.Background());
-
-    this.generateMultipleBox(this.gameData.amount);
+    this.restartGame();
 
   }
   version() {
@@ -105,9 +107,11 @@ class Game {
     this.canvas.style.height = this.stage.height + "px";
   }
   restartGame(){
-    this.stage.removeChild(this.gameOverView);
-    this.generateMultipleBox();
     this.gameData.resetNum();
+    this.stage.removeAllChildren();
+    this.stage.addChild(new this.lib.Background());
+    this.generateMultipleBox(this.gameData.amount);
+
   }
 }
 
