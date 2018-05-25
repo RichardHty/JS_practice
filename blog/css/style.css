@@ -1,0 +1,17 @@
+/* body {
+  max-width:700px;
+  width: 80%;
+  border: 10px solid #7a7474;
+  margin:20px auto;
+} */
+p {
+  margin:10 px;
+}
+
+.jumbotron {
+  margin-bottom:1rem;
+  margin-top: 3rem;
+}
+#intro {
+  padding-left: 2em;
+}
