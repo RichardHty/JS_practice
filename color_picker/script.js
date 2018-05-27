@@ -1,11 +1,13 @@
 
 var easyMode = document.getElementById("easyMode");
 var hardMode = document.getElementById("hardMode");
+var colorPat = document.getElementById("colorPat");
+var newColor = document.getElementById("reset");
 
 var colorValue = [];
 var colorResult = [];
 var colors = [];
-var colorAmount = 4;
+var colorAmount = 3;
 var pickedColor = 0;
 var hardRange = 50;
 var hardFlag = false;
@@ -29,7 +31,6 @@ function generateOneSqure(){
   }
   parseRGB();
 }
-
 function parseRGB(){
   var tempString = "rgb(";
   tempString += colorValue[0]+", ";
@@ -55,7 +56,16 @@ function displaySquares(){
       div.style.backgroundColor = colors[pickedColor];
     else
       div.style.backgroundColor = colors[i];
-
+    div.tag = i;
+    div.addEventListener("click", function(){
+      var eid = Number(this.tag);
+      if(eid === pickedColor){
+        alert("Correct!");
+      }else{
+        var targetChild = colorPat.childNodes[eid];
+        targetChild.style.visibility = "hidden";
+      }
+    });
     document.getElementById("colorPat").appendChild(div);
   }
 }
@@ -70,29 +80,27 @@ function clearSquares(){
   }
   colors.length = 0;
 }
-easyMode.addEventListener("click", function(e){
-  hardFlag = false;
-  colorAmount = 3;
+function reset(){
   clearSquares();
   generateSquares();
   pickColor();
   displaySquares();
+}
+easyMode.addEventListener("click", function(e){
+  hardFlag = false;
+  colorAmount = 3;
+  reset();
   e.preventDefault();
 });
 hardMode.addEventListener("click", function(e){
   hardFlag = true;
   colorAmount = 6;
-  clearSquares();
-  generateSquares();
-  pickColor();
-  displaySquares();
+  reset();
   e.preventDefault();
 });
-// colorAmount = 6;
-// generateSquares(true);
-// pickColor();
-// displaySquares();
+newColor.addEventListener("click",function(e){
+  reset();
+  e.preventDefault();
+});
 
-console.log(colors);
-console.log(pickedColor);
-console.log(colorPat.innerHTML);
+reset();
