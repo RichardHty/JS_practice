@@ -1,0 +1,18 @@
+body {
+  text-transform: uppercase;
+
+}
+h1 {
+  text-align: center;
+}
+.square {
+  background: purple;
+  width:30%;
+  float:left;
+  margin:1.66%;
+  padding-bottom:30%
+}
+#container{
+  margin:0 auto;
+  max-width:600px;
+}

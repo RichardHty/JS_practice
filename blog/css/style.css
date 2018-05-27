@@ -7,13 +7,22 @@
 p {
   margin:10 px;
 }
-.container {
-  
+html{
+  height:100%;
+}
+#title {
+  text-shadow:0px 3px 8px rgb(0,0,0,0.4),
+              0px 4px 12px rgb(0,0,0,0.1),
+              0px 6px 23px rgb(0,0,0,0.1);
 }
 .jumbotron {
   margin-top: 2rem;
   max-height: 15rem;
+  color: white;
   margin-bottom:1rem;
+  background-image: url("../img/leaves.jpeg") ;
+  background-size: cover;
+  background-position: center;
 }
 #intro {
   padding-left: 2em;
