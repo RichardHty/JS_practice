@@ -22,7 +22,7 @@ var checkState = function() {
     reset();
   }else{
     var eid = this.style.backgroundColor;
-    if(eid === colors[0]){
+    if(eid === colors[pickedColor]){
       won();
     }else{
       message.textContent = "Try Again";
@@ -31,12 +31,12 @@ var checkState = function() {
   }
 }
 var mouseOverChange = function () {
-   this.style.backgroundColor = colors[0];
+   this.style.backgroundColor = colors[pickedColor];
    this.style.color = "white";
 }
 var mouseLeaveChange =  function () {
     this.style.backgroundColor = 'transparent';
-    this.style.color = colors[0];
+    this.style.color = colors[pickedColor];
 }
 
 function generateResult(){
@@ -56,6 +56,7 @@ function generateOneSqure(){
       colorValue[i] = Math.floor(Math.random()*256);
     }
   }
+  
   parseRGB();
 }
 function parseRGB(){
@@ -77,19 +78,18 @@ function displaySquares(){
   for(var i = 0;i<colorAmount;i++){
     var div = document.createElement("div");
     div.classList.add("square");
-    if(i === pickedColor)
-      div.style.backgroundColor = colors[0];
-    else if(pickedColor !== 0 && i === 0)
-      div.style.backgroundColor = colors[pickedColor];
-    else
-      div.style.backgroundColor = colors[i];
+    div.style.backgroundColor = colors[i];
     div.addEventListener("click", checkState);
     document.getElementById("colorPat").appendChild(div);
   }
 }
 function pickColor(){
   pickedColor = Math.floor(Math.random()*colorAmount);
-  document.querySelector("#question").textContent = colors[0];
+  var temp = colors[0];
+  colors[0] = colors[pickedColor];
+  colors[pickedColor] = temp;
+  document.querySelector("#question").textContent = colors[pickedColor];
+
 }
 function clearSquares(){
   var colorPat = document.querySelector("#colorPat");
@@ -122,16 +122,16 @@ function won(){
   message.textContent = "Correct!";
   newColor.textContent = "play again";
   for(var i = 0;i<header.length;i++){
-    header[i].style.backgroundColor = colors[0];
+    header[i].style.backgroundColor = colors[pickedColor];
   }
   var squares = document.querySelectorAll(".square");
   for(var i = 0;i<squares.length;i++){
-    squares[i].style.backgroundColor = colors[0];
+    squares[i].style.backgroundColor = colors[pickedColor];
     squares[i].style.visibility = "visible";
   }
   console.log(btn);
   for(var i = 0;i<btn.length;i++){
-    btn[i].style.color = colors[0];
+    btn[i].style.color = colors[pickedColor];
     btn[i].addEventListener('mouseover', mouseOverChange);
     btn[i].addEventListener('mouseleave',mouseLeaveChange);
   }
