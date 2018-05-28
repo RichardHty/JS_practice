@@ -1,6 +1,8 @@
 
 var easyMode = document.getElementById("easyMode");
 var hardMode = document.getElementById("hardMode");
+var superMode = document.getElementById("superMode");
+
 var colorPat = document.getElementById("colorPat");
 var newColor = document.getElementById("reset");
 var message = document.querySelector("#message");
@@ -140,8 +142,14 @@ easyMode.addEventListener("click", function(e){
   e.preventDefault();
 });
 hardMode.addEventListener("click", function(e){
-  hardFlag = true;
+  hardFlag = false;
   colorAmount = 6;
+  reset();
+  e.preventDefault();
+});
+superMode.addEventListener("click", function(e){
+  hardFlag = true;
+  colorAmount = 9;
   reset();
   e.preventDefault();
 });
