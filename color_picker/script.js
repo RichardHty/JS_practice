@@ -3,14 +3,18 @@ var easyMode = document.getElementById("easyMode");
 var hardMode = document.getElementById("hardMode");
 var colorPat = document.getElementById("colorPat");
 var newColor = document.getElementById("reset");
+var message = document.querySelector("#message");
+var header = document.querySelectorAll("#header");
+var btn = document.querySelectorAll(".btn");
 
 var colorValue = [];
 var colorResult = [];
 var colors = [];
-var colorAmount = 3;
 var pickedColor = 0;
+var colorAmount = 3;
 var hardRange = 50;
 var hardFlag = false;
+var isWon = false;
 
 function generateResult(){
   for(var i = 0;i<3;i++){
@@ -40,6 +44,46 @@ function parseRGB(){
   colors.push(tempString);
 }
 
+function won(){
+  message.textContent = "Correct!";
+  newColor.textContent = "play again";
+  for(var i = 0;i<header.length;i++){
+    header[i].style.backgroundColor = colors[0];
+  }
+  var squares = document.querySelectorAll(".square");
+  for(var i = 0;i<squares.length;i++){
+    squares[i].style.backgroundColor = colors[0];
+    squares[i].style.visibility = "visible";
+  }
+  console.log(btn);
+  for(var i = 0;i<btn.length;i++){
+    btn[i].style.color = colors[0];
+    btn[i].addEventListener('mouseover', mouseOverChange);
+    btn[i].addEventListener('mouseleave',mouseLeaveChange);
+  }
+  isWon = true;
+}
+var checkState = function() {
+  if(isWon){
+    reset();
+  }else{
+    var eid = this.style.backgroundColor;
+    if(eid === colors[0]){
+      won();
+    }else{
+      message.textContent = "Try Again";
+      this.style.visibility = "hidden";
+    }
+  }
+}
+var mouseOverChange = function () {
+   this.style.backgroundColor = colors[0];
+   this.style.color = "white";
+}
+var mouseLeaveChange =  function () {
+    this.style.backgroundColor = 'transparent';
+    this.style.color = colors[0];
+}
 function generateSquares(){
   generateResult();
   for(var i=1;i<colorAmount;i++){
@@ -56,16 +100,7 @@ function displaySquares(){
       div.style.backgroundColor = colors[pickedColor];
     else
       div.style.backgroundColor = colors[i];
-    div.tag = i;
-    div.addEventListener("click", function(){
-      var eid = Number(this.tag);
-      if(eid === pickedColor){
-        alert("Correct!");
-      }else{
-        var targetChild = colorPat.childNodes[eid];
-        targetChild.style.visibility = "hidden";
-      }
-    });
+    div.addEventListener("click", checkState);
     document.getElementById("colorPat").appendChild(div);
   }
 }
@@ -81,11 +116,23 @@ function clearSquares(){
   colors.length = 0;
 }
 function reset(){
+  message.textContent = "";
+  newColor.textContent = "new colors";
+  for(var i = 0;i<header.length;i++){
+    header[i].style.backgroundColor = "#0375b4";
+  }
   clearSquares();
   generateSquares();
   pickColor();
   displaySquares();
+  isWon = false;
+  for(var i = 0;i<btn.length;i++){
+    btn[i].removeAttribute("style");
+    btn[i].removeEventListener('mouseover', mouseOverChange);
+    btn[i].removeEventListener('mouseleave',mouseLeaveChange);
+  }
 }
+
 easyMode.addEventListener("click", function(e){
   hardFlag = false;
   colorAmount = 3;
