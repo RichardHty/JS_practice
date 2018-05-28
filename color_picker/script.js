@@ -14,7 +14,7 @@ var colorResult = [];
 var colors = [];
 var pickedColor = 0;
 var colorAmount = 3;
-var hardRange = 50;
+var hardRange = 80;
 var hardFlag = false;
 var isWon = false;
 var checkState = function() {
@@ -100,6 +100,9 @@ function clearSquares(){
 }
 function reset(){
   message.textContent = "click to play";
+  if(hardFlag){
+    message.textContent += ", error limit: "+hardRange;
+  }
   newColor.textContent = "new colors";
   for(var i = 0;i<header.length;i++){
     header[i].style.backgroundColor = "#0375b4";
@@ -142,13 +145,14 @@ easyMode.addEventListener("click", function(e){
   e.preventDefault();
 });
 hardMode.addEventListener("click", function(e){
-  hardFlag = false;
+  hardFlag = true;
   colorAmount = 6;
   reset();
   e.preventDefault();
 });
 superMode.addEventListener("click", function(e){
   hardFlag = true;
+  hardRange = 20;
   colorAmount = 9;
   reset();
   e.preventDefault();
