@@ -147,6 +147,7 @@ easyMode.addEventListener("click", function(e){
 hardMode.addEventListener("click", function(e){
   hardFlag = true;
   colorAmount = 6;
+  hardRange = 80;
   reset();
   e.preventDefault();
 });
