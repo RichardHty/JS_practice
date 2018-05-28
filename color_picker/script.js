@@ -4,7 +4,7 @@ var hardMode = document.getElementById("hardMode");
 var colorPat = document.getElementById("colorPat");
 var newColor = document.getElementById("reset");
 var message = document.querySelector("#message");
-var header = document.querySelectorAll("#header");
+var header = document.querySelectorAll(".header");
 var btn = document.querySelectorAll(".btn");
 
 var colorValue = [];
@@ -15,6 +15,27 @@ var colorAmount = 3;
 var hardRange = 50;
 var hardFlag = false;
 var isWon = false;
+var checkState = function() {
+  if(isWon){
+    reset();
+  }else{
+    var eid = this.style.backgroundColor;
+    if(eid === colors[0]){
+      won();
+    }else{
+      message.textContent = "Try Again";
+      this.style.visibility = "hidden";
+    }
+  }
+}
+var mouseOverChange = function () {
+   this.style.backgroundColor = colors[0];
+   this.style.color = "white";
+}
+var mouseLeaveChange =  function () {
+    this.style.backgroundColor = 'transparent';
+    this.style.color = colors[0];
+}
 
 function generateResult(){
   for(var i = 0;i<3;i++){
@@ -44,46 +65,6 @@ function parseRGB(){
   colors.push(tempString);
 }
 
-function won(){
-  message.textContent = "Correct!";
-  newColor.textContent = "play again";
-  for(var i = 0;i<header.length;i++){
-    header[i].style.backgroundColor = colors[0];
-  }
-  var squares = document.querySelectorAll(".square");
-  for(var i = 0;i<squares.length;i++){
-    squares[i].style.backgroundColor = colors[0];
-    squares[i].style.visibility = "visible";
-  }
-  console.log(btn);
-  for(var i = 0;i<btn.length;i++){
-    btn[i].style.color = colors[0];
-    btn[i].addEventListener('mouseover', mouseOverChange);
-    btn[i].addEventListener('mouseleave',mouseLeaveChange);
-  }
-  isWon = true;
-}
-var checkState = function() {
-  if(isWon){
-    reset();
-  }else{
-    var eid = this.style.backgroundColor;
-    if(eid === colors[0]){
-      won();
-    }else{
-      message.textContent = "Try Again";
-      this.style.visibility = "hidden";
-    }
-  }
-}
-var mouseOverChange = function () {
-   this.style.backgroundColor = colors[0];
-   this.style.color = "white";
-}
-var mouseLeaveChange =  function () {
-    this.style.backgroundColor = 'transparent';
-    this.style.color = colors[0];
-}
 function generateSquares(){
   generateResult();
   for(var i=1;i<colorAmount;i++){
@@ -116,7 +97,7 @@ function clearSquares(){
   colors.length = 0;
 }
 function reset(){
-  message.textContent = "";
+  message.textContent = "click to play";
   newColor.textContent = "new colors";
   for(var i = 0;i<header.length;i++){
     header[i].style.backgroundColor = "#0375b4";
@@ -131,6 +112,25 @@ function reset(){
     btn[i].removeEventListener('mouseover', mouseOverChange);
     btn[i].removeEventListener('mouseleave',mouseLeaveChange);
   }
+}
+function won(){
+  message.textContent = "Correct!";
+  newColor.textContent = "play again";
+  for(var i = 0;i<header.length;i++){
+    header[i].style.backgroundColor = colors[0];
+  }
+  var squares = document.querySelectorAll(".square");
+  for(var i = 0;i<squares.length;i++){
+    squares[i].style.backgroundColor = colors[0];
+    squares[i].style.visibility = "visible";
+  }
+  console.log(btn);
+  for(var i = 0;i<btn.length;i++){
+    btn[i].style.color = colors[0];
+    btn[i].addEventListener('mouseover', mouseOverChange);
+    btn[i].addEventListener('mouseleave',mouseLeaveChange);
+  }
+  isWon = true;
 }
 
 easyMode.addEventListener("click", function(e){
@@ -149,5 +149,4 @@ newColor.addEventListener("click",function(e){
   reset();
   e.preventDefault();
 });
-
 reset();
