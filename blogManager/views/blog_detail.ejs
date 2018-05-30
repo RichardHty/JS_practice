@@ -1,0 +1,15 @@
+
+<% include partials/header %>
+<div class="content">
+	 <div class="ui raised very padded text container segment">
+		<h2 class="ui header"><%= blog.title %></h2>
+		<h4><%= blog.created %></h4>
+		<img src="<%= blog.image %>" alt="">
+		<p><%= blog.body %></p>
+		<form action="/blog/<%= blog._id%>?_method=DELETE" method="POST">
+			<button class="ui red basic button">delete</button>
+		</form>
+	</div>
+	
+</div>
+<% include partials/footer %>

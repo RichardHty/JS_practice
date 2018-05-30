@@ -1,0 +1,12 @@
+
+<% include partials/header %>
+<div class="content">
+	 <% allProjects.forEach(function(project){ -%>
+	 <div class="ui raised very padded text container segment">
+		<h2 class="ui header"><%= project.title %></h2>
+		<h4><%= project.created %></h4>
+		<a href="<%= project.url %>"><img src="<%= project.image %>"></a>
+	</div>
+	<% });%> 
+</div>
+<% include partials/footer %>

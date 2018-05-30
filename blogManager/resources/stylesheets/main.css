@@ -1,0 +1,27 @@
+
+i.icon {
+  font-size:2em;
+}
+.container.main{
+	margin-top:7em;
+}
+.content{
+	margin-top:5em;
+}
+.fluid.ui.button{
+	background-color: rgb(89, 92, 94);
+	color: rgb(240, 240, 240);
+	font-size: 1.2em;
+	letter-spacing: 0.1em;
+	-webkit-transition: background-color 0.3s ease-out;
+  	-moz-transition: background-color 0.3s ease-out;
+  	-o-transition: background-color 0.3s ease-out;
+  	transition: background-color 0.3s ease-out;
+  	transition-delay:0.1s;
+    transition-duration: 0.7s;
+}
+.fluid.ui.button:hover{
+	background-color: rgb(28, 119, 175);
+	color:white;
+	cursor:pointer;
+}
