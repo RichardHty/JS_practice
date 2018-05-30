@@ -1,0 +1,42 @@
+<% include partials/header%>
+<div class="content">
+  <% include partials/navbar%>
+<!-- motto -->
+  <div class="container" >
+    <div class="jumbotron" >
+      <h1 id="title">Tianyou's site</h1>
+        <p id="intro">new stuff everyday.</p>
+    </div>
+  </div>
+
+<!-- content -->
+  <div class="container">
+    <% var i = 0;%>
+    <% while(i<projects.length){ -%>
+      <% if (i % 3 === 0) { -%>
+            <div class="row">
+          <% } -%>
+          <% var j = i;
+          while(i<projects.length && i<j+3){ -%>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+              <div >
+                <img src="<%= projects[i].img %>" class="img-thumbnail">
+                 <figcaption class="figure-caption text-center">
+                  <p><a href="<%= projects[i].github_link %>">
+                    <%= projects[i].caption%>
+                  </a></p>
+                </figcaption>
+              </div>
+            </div>
+          <% i++; %>
+        <% } %>
+            
+      <% if (j % 3 == 0) { -%>
+            </div>
+          <% } -%>
+
+    <% } -%>
+  </div>
+
+</div>
+<% include partials/footer%>
