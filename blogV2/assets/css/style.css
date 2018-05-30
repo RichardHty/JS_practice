@@ -4,15 +4,15 @@
   border: 10px solid #7a7474;
   margin:20px auto;
 } */
-p {
-  margin:10px;
-}
+
 html,body{
   min-height:100%;
 }
 .content {
   min-height: calc(100vh - 70px);
+  margin-top:5em;
 }
+
 .footer{
   background-color: #343A40;
   color:white;

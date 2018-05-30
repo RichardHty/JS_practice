@@ -1,0 +1,15 @@
+<% include partials/header %>
+<div class="content">
+	<div class="container">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title"><%= blog.title %></h5>
+	    		<h6 class="card-subtitle mb-2 text-muted"><%= blog.tag %></h6>
+	    		<p class="card-text"><%= blog.body %></p>
+	            <p class="card-text text-muted"><%= blog.created.toDateString() %></p>
+	        </div>
+		</div>
+	</div>
+	
+</div>
+<%include partials/footer %>

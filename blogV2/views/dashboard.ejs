@@ -19,13 +19,13 @@
           <% var j = i;
           while(i<projects.length && i<j+3){ -%>
             <div class="col-lg-4 col-md-4 col-sm-6">
-              <div >
-                <img src="<%= projects[i].img %>" class="img-thumbnail">
-                 <figcaption class="figure-caption text-center">
-                  <p><a href="<%= projects[i].github_link %>">
-                    <%= projects[i].caption%>
-                  </a></p>
-                </figcaption>
+              <div class="card" >
+              	<a href="<%= projects[i].url %>">
+                	<img src="<%= projects[i].image %>" class="card-img-top">
+            	</a>
+                <div class="card-body">
+            		<p>date: <%= projects[i].created.toDateString() %></p>
+                </div>
               </div>
             </div>
           <% i++; %>

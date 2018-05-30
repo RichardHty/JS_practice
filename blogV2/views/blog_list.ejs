@@ -1,0 +1,22 @@
+<% include partials/header%>
+<% include partials/navbar%>
+  <div class="content">
+  
+  
+  <% allBlogs.forEach(function(blog){ -%>
+		<h2>title: <%= blog.title %></h2>
+		<h4>date: <%= blog.created %></h2>
+		<img src="<%= blog.image %>" alt="">
+		<p><%- blog.body.substring(0,100) %></p>
+    <a href="/blog/<%= blog._id%>">Read More</a>
+	<% });%> 
+
+  </div>
+  <script>
+  	var navbarItem = document.querySelectorAll(".nav-item");
+  	navbarItem.forEach(function(item){
+  		item.classList.remove("active");
+  	});
+  	navbarItem[1].classList.add("active"); 
+  </script>
+<% include partials/footer%>
