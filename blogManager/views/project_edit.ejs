@@ -1,0 +1,36 @@
+
+<% include partials/header %>
+
+<div class="ui main text container segment">
+	<div class="ui huge header">Edit For <%= project.title%></div>
+	<form class ="ui form" action="/project/<%= project._id%>?_method=PUT" method="POST">
+		<div class="field">
+			<label>Title</label>
+			<input type="text" name="project[title]" value="<%= project.title%>" required="true">
+		</div>
+		<div class="field">
+			<label>Description</label>
+			<textarea name="project[description]" required="true"><%= project.description%></textarea>
+		</div>
+		<div class="field">
+			<label>Image</label>
+			<input type="text" name="project[image]" value="<%= project.image%>">
+		</div>
+		
+		<div class="field">
+			<label>Project Url</label>
+			<input type="text" name="project[url]" value="<%= project.url%>"required="true">
+		</div>
+		<div class="field">
+			<label>Source Url</label>
+			<input type="text" name="project[source_url]" value="<%= project.source_url%>"required="true">
+		</div>
+		<div class="field">
+			<label>Tags</label>
+			<input type="text" name="project[tag]" value="<%= project.tag%>">
+		</div>
+		<button class="fluid ui button">Submit</button>
+	</form>
+</div>
+
+<% include partials/footer %>

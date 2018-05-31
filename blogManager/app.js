@@ -22,7 +22,7 @@ var blogSchema = new mongoose.Schema({
 		default:"/img/leaves.jpeg"
 	},
 	body: String,
-	tag: [],
+	tag: String,
 	created: {
 		type:Date, 
 		default:Date.now
@@ -40,7 +40,8 @@ var projectSchema = new mongoose.Schema({
 		default:"/img/leaves.jpeg"
 	},
 	url: String,
-	tag: [],
+	source_url: String,
+	tag: String,
 	description: String,
 	created: {
 		type:Date, 
@@ -147,6 +148,20 @@ app.get("/blog/:id/edit",function(req,res){
   });
   
 });
+
+app.get("/project/:id/edit",function(req,res){
+  Project.findById(req.params.id, function(err,foundProject){
+    if(err){
+      console.log(err);
+    }else{
+      if(foundProject.image.startsWith("img/")){
+        foundProject.image = "/"+foundProject.image;
+      }
+      res.render("project_edit",{project:foundProject});
+    }
+  });
+  
+});
 //update
 app.put("/blog/:id",function(req,res){
   var updates = req.body.blog;
@@ -160,7 +175,18 @@ app.put("/blog/:id",function(req,res){
   });
   
 });
-
+app.put("/project/:id",function(req,res){
+  var updates = req.body.project;
+  updates.updated = Date.now();
+  Project.findByIdAndUpdate(req.params.id,updates,function(err,updatedProject){
+    if(err){
+      console.log(err);
+    }else{
+      res.redirect("/projects");
+    }
+  });
+  
+});
 //delete
 app.delete("/blog/:id",function(req,res){
 	Blog.findByIdAndRemove(req.params.id,function(err){
@@ -169,6 +195,16 @@ app.delete("/blog/:id",function(req,res){
   	}else{
   		res.redirect("/blogs");
   	}
+  });
+})
+
+app.delete("/project/:id",function(req,res){
+  Project.findByIdAndRemove(req.params.id,function(err){
+    if(err){
+      console.log(err);
+    }else{
+      res.redirect("/projects");
+    }
   });
 })
 app.listen(5040,process.env.IP,function(){
