@@ -18,7 +18,9 @@ i.icon {
 .main-content{
 	margin-top:5em;
 }
-
+.ui.icon.input>i.icon{
+	width:1.2em;
+}
 .fluid.ui.button{
 	background-color: rgb(89, 92, 94);
 	color: rgb(240, 240, 240);

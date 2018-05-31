@@ -15,7 +15,7 @@
 					<span class="updated-time">, Updated at: <%= blog.updated %></span>
 				</div>
 				<div class="description">
-					<p><%= blog.body.substring(0,100) %></p>
+					<p><%- blog.body %></p>
 				</div>
 				<div class="extra">
 					<a href="/blog/<%= blog._id%>">Read More</a>
