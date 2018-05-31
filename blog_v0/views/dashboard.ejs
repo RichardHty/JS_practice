@@ -1,0 +1,51 @@
+
+<% include partials/header %>
+<div class="main-content ui container">
+	<div class="ui special cards">
+	 <% allProjects.forEach(function(project){ -%>
+	 	<div class="card">
+			<div class="blurring dimmable image">
+		      <div class="ui dimmer">
+		        <div class="content">
+		          <div class="center">
+		            <div class="ui inverted button">
+		            	<a href="<%= project.url %>">try it</a>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		      <img src="<%= project.image %>">
+	    	</div>
+		
+			<div class="content">
+				<div class="header">
+					<%= project.title %>
+				</div>
+				<div class="meta">
+					<a href=""><%= project.tag %></a>
+				</div>
+				<div class="description">
+					<%- project.description %>
+				</div>
+			</div>
+			<div class="extra content">
+				<span class="right floated">
+					<%= project.created.toDateString() %>
+				</span>
+				<span>
+					<a href="<%= project.source_url %>">Source</a>
+				</span>
+			</div>
+		</div>
+
+	<% });%> 
+	</div>
+</div>
+  <script>
+  	var navbarItem = document.querySelectorAll(".item");
+  	navbarItem.forEach(function(item){
+  		item.classList.remove("active");
+  	});
+  	navbarItem[1].classList.add("active"); 
+  </script>
+<% include partials/footer %>

@@ -1,0 +1,36 @@
+
+i.icon {
+  font-size:2em;
+}
+.container.main{
+	margin-top:7em;
+}
+.blog-detail-created-time{
+	color:grey;
+	font-size: 0.45em;
+	float:right;
+	display:block;
+
+}
+.created-time, .updated-time{
+	display:inline;
+}
+.main-content{
+	margin-top:5em;
+}
+.ui.card{
+	width:100%;
+
+}
+.ui.card>.content>.description{
+	clear:none;
+}
+.ui.card>.extra{
+	text-align: right;
+	margin-right: 8%;
+	margin-left: 8%;
+}
+.blog-cards{
+	margin:0 auto;
+	width:60%;
+}

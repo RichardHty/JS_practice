@@ -1,0 +1,12 @@
+
+<% include partials/header %>
+<div class="main-content">
+	 <div class="ui raised very padded text container segment">
+		<h1 class="ui header"><%= blog.title %><span class="blog-detail-created-time"><%= blog.created.toDateString() %></span></h1>
+		<img class="ui centered large image" src="<%= blog.image %>" alt="">
+		<p></p>
+		<%- blog.body %>
+	</div>
+
+</div>
+<% include partials/footer %>
