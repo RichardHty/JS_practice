@@ -41,6 +41,7 @@ var projectSchema = new mongoose.Schema({
 	},
 	url: String,
 	tag: [],
+	description: String,
 	created: {
 		type:Date, 
 		default:Date.now

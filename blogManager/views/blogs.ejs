@@ -1,16 +1,36 @@
 
 <% include partials/header %>
-<div class="content">
-	<div class="ui raised very padded text container segment">
+<div class="main-content">
+	<div class="ui items container">
 	 <% allBlogs.forEach(function(blog){ -%>
-  		<img class="ui small left floated image" src="<%= blog.image %>" alt="">
-		<h2 class="ui header"><%= blog.title %></h2>
-		<h4>date: <%= blog.created %></h4>
-		<p><%= blog.body.substring(0,100) %></p>
-		<a href="/blog/<%= blog._id%>">Read More</a>
-		<div class="ui divider"></div>
-	
+	 	<div class="item">
+	 		<div class="image">
+	 			<img  src="<%= blog.image %>" alt="">
+	 		</div>
+
+  			<div class="content">
+				<a class="header"><%= blog.title %></a>
+				<div class="meta">
+					<span class="created-time">Created at: <%= blog.created %></span>
+					<span class="updated-time">, Updated at: <%= blog.updated %></span>
+				</div>
+				<div class="description">
+					<p><%= blog.body.substring(0,100) %></p>
+				</div>
+				<div class="extra">
+					<a href="/blog/<%= blog._id%>">Read More</a>
+				</div>
+			</div>	
+			
+			<form action="/blog/<%= blog._id%>/edit" method="GET">
+				<button class="ui orange basic button">edit</button>
+			</form>
+			<form action="/blog/<%= blog._id%>?_method=DELETE" method="POST">
+				<button class="ui red basic button">delete</button>
+			</form>
+		</div>
 	<% });%> 
 	</div>
 </div>
+
 <% include partials/footer %>

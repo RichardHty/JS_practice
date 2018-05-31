@@ -5,9 +5,20 @@ i.icon {
 .container.main{
 	margin-top:7em;
 }
-.content{
+.blog-detail-created-time{
+	color:grey;
+	font-size: 0.45em;
+	float:right;
+	display:block;
+
+}
+.created-time, .updated-time{
+	display:inline;
+}
+.main-content{
 	margin-top:5em;
 }
+
 .fluid.ui.button{
 	background-color: rgb(89, 92, 94);
 	color: rgb(240, 240, 240);
