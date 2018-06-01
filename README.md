@@ -4,4 +4,6 @@
 ### loan calculator: querySelector, setTimeout, create new element use js, set display
 ### games: a count game made by Animate CC and js.
 
-View at [tianyou'sblog] (http://www.tianyouh.com)
+View at [tianyou'sblog].
+
+[tianyou'sblog]:https://www.google.com
