@@ -1,6 +1,6 @@
 
 <% include partials/header %>
-<div class="main-content ui container">
+<div class="main-content ui container" style="margin-top: 5em;">
 	<div class="ui special cards">
 	 <% allProjects.forEach(function(project){ -%>
 	 	<div class="card">
@@ -41,6 +41,7 @@
 	<% });%> 
 	</div>
 </div>
+
   <script>
   	var navbarItem = document.querySelectorAll(".item");
   	navbarItem.forEach(function(item){

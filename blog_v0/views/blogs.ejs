@@ -1,27 +1,37 @@
 
 <% include partials/header %>
-<div class="main-content">
 
-	<div class="blog-cards">
+<div class="ui grid container">
+
+	<div class="three wide column">
+		<% include partials/sidebar%>
+	</div>
+	<div class="thirteen wide column">
+		<div class="main-content">
+
+		<div class="blog-cards">
+		
+		<% allBlogs.forEach(function(blog){ -%>
+		<div class="ui card">
+		  	<div class="content">
+		  		<img  class="ui small left floated image " src="<%= blog.image %>" alt="">
+			    <div class="header"><%= blog.title %></div>
+			    <div class="meta"><%= blog.created.toDateString() %></div>
+			    <div class="description">
+			      <%- blog.body %>
+			    </div>
+			    
+			  </div>
+			  <div class="extra content">
+			    	<a href="/blog/<%= blog._id%>">Read More</a>
+			    </div>
+
+		</div>
+		<% });%> 
+		</div>
+		</div>
+	</div>
 	
-	<% allBlogs.forEach(function(blog){ -%>
-	<div class="ui card">
-	  	<div class="content">
-	  		<img  class="ui small left floated image " src="<%= blog.image %>" alt="">
-		    <div class="header"><%= blog.title %></div>
-		    <div class="meta"><%= blog.created.toDateString() %></div>
-		    <div class="description">
-		      <%- blog.body %>
-		    </div>
-		    
-		  </div>
-		  <div class="extra content">
-		    	<a href="/blog/<%= blog._id%>">Read More</a>
-		    </div>
-
-	</div>
-	<% });%> 
-	</div>
 </div>
   <script>
   	var navbarItem = document.querySelectorAll(".item");

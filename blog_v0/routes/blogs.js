@@ -13,7 +13,6 @@ router.get("/",function(req,res){
       blogs.forEach(function(blog){
         blog.body = blog.body.substring(0,50) + "...";
         blog.body = markdown.render(blog.body);
-        console.log(blog.body);
       });
   		res.render("blogs",{allBlogs:blogs});
   	}
